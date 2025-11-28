@@ -1,4 +1,8 @@
 {
+  "name": "otto-workforce-management",
+  "description": "A workforce management application for teams.",
+  "version": "0.0.1",
+  "license": "ISC",
   "private": true,
   "scripts": {
     "dev": "next dev",
