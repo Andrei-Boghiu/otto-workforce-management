@@ -11,7 +11,7 @@ export function PublicHeader() {
         <div className="flex items-center gap-6 font-bold text-xl mx-2">
           <Link href="/">Otto - Workforce Management</Link>
           <Suspense>
-            <AuthButton showUser={false} showSignBtns={false} />
+            <AuthButton showUser={false} showSignBtns={false} showGoToDashboard={true} />
           </Suspense>
         </div>
 

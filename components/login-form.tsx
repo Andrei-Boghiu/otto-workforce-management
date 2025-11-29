@@ -10,6 +10,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+const defaultUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +40,28 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
     }
   };
 
+  const handleOAuthLogin = async () => {
+    const supabase = createClient();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "bitbucket",
+
+        options: {
+          redirectTo: `${defaultUrl}/auth/callback`,
+        },
+      });
+
+      if (error) throw error;
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "An error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -53,6 +77,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
                 <Input
                   id="email"
                   type="email"
+                  autoComplete="true"
                   placeholder="m@example.com"
                   required
                   value={email}
@@ -80,6 +105,15 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
               {error && <p className="text-sm text-red-500">{error}</p>}
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? "Logging in..." : "Login"}
+              </Button>
+              <Button
+                type="button"
+                className="w-full"
+                variant="outline"
+                onClick={handleOAuthLogin}
+                disabled={isLoading}
+              >
+                {isLoading ? "Connecting..." : "Continue with Bitbucket"}
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
