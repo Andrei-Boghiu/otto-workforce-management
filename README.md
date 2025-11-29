@@ -1,109 +1,86 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+# Otto — Workforce Management
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+A modern workforce management platform designed to help organizations structure teams, manage people, and streamline employee operations. Otto provides secure authentication, multi-organization support, role-based permissions, and day-off tracking — all with a clean and scalable architecture.
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+---
 
 ## Features
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Proxy
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Password-based authentication block installed via the [Supabase UI Library](https://supabase.com/ui/docs/nextjs/password-based-auth)
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+### Authentication
 
-## Demo
+- Login with **email + password**.
+- Login with **three OAuth providers** (e.g., Google, GitHub, Bitbucket).
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+---
 
-## Deploy to Vercel
+## Organizations & Membership
 
-Vercel deployment will guide you through creating a Supabase account and project.
+### Create or Join Organizations
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+- Users can **create their own organizations**.
+- Users can **request to join existing organizations**.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+### Membership Management (Organization Owners)
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+- Approve or deny **join requests**.
+- Manage all members of the organization.
+- Modify each member’s **role**:
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+  - **Employee**
+  - **Manager**
+  - **Contractor**
+  - **HR Specialist**
 
-## Clone and run locally
+---
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+## Teams
 
-2. Create a Next.js app using the Supabase Starter template npx command
+### Team Structure
 
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
+- Organization owners can create **any number of teams**.
+- A team is always bound to one organization.
+- A user can belong to **only one team at a time**.
 
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
+### Permissions
 
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
+- Users with **Manager** role or above can:
 
-3. Use `cd` to change into the app's directory
+  - Add users to teams
+  - Move users between teams (while respecting the “one team at a time” rule)
+  - Approve or Deny days-off requests
 
-   ```bash
-   cd with-supabase-app
-   ```
+---
 
-4. Rename `.env.example` to `.env.local` and update the following:
+## Organization Directory
 
-  ```env
-  NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=[INSERT SUPABASE PROJECT API PUBLISHABLE OR ANON KEY]
-  ```
-  > [!NOTE]
-  > This example uses `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, which refers to Supabase's new **publishable** key format.
-  > Both legacy **anon** keys and new **publishable** keys can be used with this variable name during the transition period. Supabase's dashboard may show `NEXT_PUBLIC_SUPABASE_ANON_KEY`; its value can be used in this example.
-  > See the [full announcement](https://github.com/orgs/supabase/discussions/29260) for more information.
+All users within an organization can view relevant details about members, including:
 
-  Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` can be found in [your Supabase project's API settings](https://supabase.com/dashboard/project/_?showConnect=true)
+- Role
+- Assigned team
+- Tenure
+- And other profile information
 
-5. You can now run the Next.js local development server:
+---
 
-   ```bash
-   npm run dev
-   ```
+## Employee Tools
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
+### Day-Off Tracking
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+- Employees can request, manage, and track their days off.
+- Designed to support HR visibility and team-level planning.
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
+---
 
-## Feedback and issues
+## Technology Overview (optional section you may expand)
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+- Framework: Next.js
+- Database: PostgreSQL with Drizzle ORM
+- Authentication: Supabase Auth + OAuth
+- UI Kit: shadcn/ui
+- Deployment: Vercel + Supabase
 
-## More Supabase examples
+---
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+## Vision
+
+Otto aims to be a minimal, clean, and efficient workforce management system that balances power with simplicity, enabling small and medium-sized teams to operate smoothly without legacy bloat.
