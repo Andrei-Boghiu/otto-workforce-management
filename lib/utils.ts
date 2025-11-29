@@ -27,9 +27,8 @@ export const PUBLIC_HEADER_LINKS: PageRoute[] = [
 export const PRIVATE_SIDEBAR_MAIN_LINKS: PageRoute[] = [
   { title: "Dashboard", href: "/dashboard" },
   { title: "Availability", href: "/availability" }, // track days off, shifts, vacations
-  { title: "Employees", href: "/employees" },
   { title: "Teams & Roles", href: "/teams" },
-  { title: "Time Off Requests", href: "/time-off" }, // approve/reject leave
+  { title: "Time Off Requests", href: "/time-off-requests" }, // approve/reject leave
   { title: "Reports & Analytics", href: "/reports" },
 ];
 

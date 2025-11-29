@@ -14,7 +14,7 @@ export default function HomePage() {
 
           <div className="flex items-center justify-center gap-4 pt-4">
             <Link href="/dashboard" className="px-6 py-3 rounded-md bg-foreground text-background text-sm font-medium">
-              Enter Dashboard
+              Get Started
             </Link>
             <Link href="/pricing" className="px-6 py-3 rounded-md border border-foreground/20 text-sm font-medium">
               View Pricing

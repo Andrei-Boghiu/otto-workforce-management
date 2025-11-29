@@ -28,26 +28,32 @@ const ThemeSwitcher = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size={"sm"}>
+      <DropdownMenuTrigger
+        asChild
+        aria-label="Toggle theme"
+        aria-haspopup="listbox"
+        aria-expanded={theme !== undefined}
+      >
+        <Button variant="ghost" size="sm" aria-label="Theme toggle button">
           {theme === "light" ? (
-            <Sun key="light" size={ICON_SIZE} className={"text-muted-foreground"} />
+            <Sun key="light" size={ICON_SIZE} className="text-muted-foreground" />
           ) : theme === "dark" ? (
-            <Moon key="dark" size={ICON_SIZE} className={"text-muted-foreground"} />
+            <Moon key="dark" size={ICON_SIZE} className="text-muted-foreground" />
           ) : (
-            <Laptop key="system" size={ICON_SIZE} className={"text-muted-foreground"} />
+            <Laptop key="system" size={ICON_SIZE} className="text-muted-foreground" />
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-content" align="start">
+
+      <DropdownMenuContent className="w-content" align="start" role="listbox" aria-label="Select theme">
         <DropdownMenuRadioGroup value={theme} onValueChange={(e) => setTheme(e)}>
-          <DropdownMenuRadioItem className="flex gap-2" value="light">
+          <DropdownMenuRadioItem className="flex gap-2" value="light" aria-label="Light theme">
             <Sun size={ICON_SIZE} className="text-muted-foreground" /> <span>Light</span>
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem className="flex gap-2" value="dark">
+          <DropdownMenuRadioItem className="flex gap-2" value="dark" aria-label="Dark theme">
             <Moon size={ICON_SIZE} className="text-muted-foreground" /> <span>Dark</span>
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem className="flex gap-2" value="system">
+          <DropdownMenuRadioItem className="flex gap-2" value="system" aria-label="System theme">
             <Laptop size={ICON_SIZE} className="text-muted-foreground" /> <span>System</span>
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
