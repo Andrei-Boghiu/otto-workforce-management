@@ -8,10 +8,10 @@ export function PublicHeader() {
   return (
     <nav className="w-full border-b border-foreground/10 h-16 flex items-center">
       <div className="w-full max-w-5xl mx-auto flex justify-between items-center p-4 text-sm">
-        <div className="flex items-center gap-6 font-semibold">
-          <Link href="/">Otto</Link>
+        <div className="flex items-center gap-6 font-bold text-xl mx-2">
+          <Link href="/">Otto - Workforce Management</Link>
           <Suspense>
-            <AuthButton showLogoutBtn={false} />
+            <AuthButton showUser={false} showSignBtns={false} />
           </Suspense>
         </div>
 

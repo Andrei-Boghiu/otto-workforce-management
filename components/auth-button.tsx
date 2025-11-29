@@ -1,23 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { createClient } from "@/lib/supabase/server";
 import { LogoutButton } from "./logout-button";
+import { useUser } from "@/hooks/useUser";
 
 type AuthButtonProps = {
-  showLogoutBtn?: boolean;
+  showUser?: boolean;
   showSignBtns?: boolean;
 };
 
-export async function AuthButton({ showLogoutBtn = true, showSignBtns = true }: AuthButtonProps) {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getClaims();
-
-  const user = data?.claims;
+export function AuthButton({ showUser = true, showSignBtns = true }: AuthButtonProps) {
+  const user = useUser();
 
   return user ? (
-    <div className="flex items-center gap-4">
-      Hey, {user.email}!{showLogoutBtn && <LogoutButton />}
-    </div>
+    <>
+      {showUser && (
+        <div className="flex items-center gap-4">
+          Hey, {user.email} <LogoutButton />
+        </div>
+      )}
+    </>
   ) : (
     <>
       {showSignBtns && (

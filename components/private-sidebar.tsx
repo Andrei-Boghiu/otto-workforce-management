@@ -11,10 +11,6 @@ export function PrivateSidebar() {
 
   return (
     <aside className="w-64 border-r border-foreground/10 bg-background flex flex-col min-h-[calc(100vh-64px)]">
-      {/* Logo / title */}
-      <div className="px-6 py-4 text-xl font-bold">Otto</div>
-
-      {/* Main links */}
       <nav className="flex-1 overflow-y-auto px-2 py-4 flex flex-col gap-1">
         {PRIVATE_SIDEBAR_MAIN_LINKS.map(({ title, href }) => {
           const isActive = pathname === href;
