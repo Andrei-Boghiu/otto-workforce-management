@@ -9,8 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "drizzle:dev": "npx drizzle-kit push --force",
-    "drizzle:prod": "npx drizzle-kit migrate"
+    "supabase:dev": "npx supabase db reset --force",
+    "supabase:prod": "npx supabase db deploy"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.1",
