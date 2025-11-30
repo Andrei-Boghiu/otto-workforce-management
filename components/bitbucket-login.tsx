@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/supabase/client";
 
 const defaultUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 

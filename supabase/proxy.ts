@@ -1,6 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { hasEnvVars, PUBLIC_FOOTER_LINKS, PUBLIC_HEADER_LINKS } from "../utils";
+import { hasEnvVars, PUBLIC_FOOTER_LINKS, PUBLIC_HEADER_LINKS } from "../lib/utils";
 
 const PUBLIC_PATHS = [
   "/",
